@@ -34,14 +34,15 @@ module.exports = function getZerosCount(number, base) {
     }
 
     let count = 0;
-    for(let i = 1; i <= number; i++){
-        if (i % maxMultiplier == 0){
-            let divN = i;
-            while(divN % maxMultiplier == 0){
-                divN /= maxMultiplier;
-                count++;
-            }
+    let i = 1;
+    let numCheck = maxMultiplier;
+    while(numCheck <= number){
+        while(numCheck % maxMultiplier == 0){
+            numCheck /= maxMultiplier;
+             count++;
         }
+        i++;
+        numCheck = maxMultiplier * i;
     }
 
     return Math.floor(count / maxpower);
